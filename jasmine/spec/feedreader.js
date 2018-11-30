@@ -95,21 +95,40 @@ $(function () {
          * Remember, loadFeed() is asynchronous so this test will require
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
+
+          /* TODO: Write a new test suite named "New Feed Selection" */
+    describe('New Feed Selection', function () {
+        let initialFeeds,finalFeeds;
+        beforeEach(function (done) {
+            const arr = [];
+            const t = document.querySelectorAll('.feed .entry')
+            //get text content of all initial feeds
+            for (i of t) {
+                arr.push(i.textContent);
+            }
+            initialFeeds = arr;
+
+            loadFeed(1,done);
+
+        });
+        it("contents change when a new feed is loaded by the loadFeed function", function (done) {
+            const finalFeeds = [];
+            const t = document.querySelectorAll('.feed .entry')
+            //get text content of all initial feeds
+            for (i of t) {
+                finalFeeds.push(i.textContent);
+            }
+            
+            expect(initialFeeds).not.toEqual(finalFeeds);
+            done();
+        });
+        /* TODO: Write a test that ensures when a new feed is loaded
+         * by the loadFeed function that the content actually changes.
+         * Remember, loadFeed() is asynchronous.
+         */
     });
 
-    /* TODO: Write a new test suite named "New Feed Selection" */
-    // describe('New Feed Selection', function () {
+    });
 
-    //    /*  beforeEach(function (done) {
-    //        const 
-    //     });
-    //     it("contents change when a new feed is loaded by the loadFeed function", function (done) {
-           
-    //         done();
-    //     }); */
-    //     /* TODO: Write a test that ensures when a new feed is loaded
-    //      * by the loadFeed function that the content actually changes.
-    //      * Remember, loadFeed() is asynchronous.
-    //      */
-    // });
+   
 }());
