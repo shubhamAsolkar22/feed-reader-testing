@@ -71,10 +71,10 @@ $(function () {
             loadFeed(0, done);
         });
 
-        it('should load atleast one .entry element within .feed container when loadFeed is called', function (done) {
+        it('should load atleast one .entry element within .feed container when loadFeed is called', function (/* done */) {
             const feedContainer = document.querySelector(".feed");
             expect(feedContainer.querySelector('.entry')).not.toBe(null);
-            done();
+            /* done(); */
         });
 
         /* test that ensures when the loadFeed
