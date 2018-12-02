@@ -66,9 +66,16 @@ $(function () {
 
 
     describe('Intitial Entries', function () {
-
+        let initialFeeds;
         beforeEach(function (done) {
-            loadFeed(0, done);
+            loadFeed(0, function(){
+                initialFeeds = [];
+                const t = document.querySelectorAll('.feed .entry')
+                //get text content of all initial feeds
+                for (i of t) {
+                    initialFeeds.push(i.textContent);
+                }
+                done();});
         });
 
         it('should load atleast one .entry element within .feed container when loadFeed is called', function (/* done */) {
@@ -83,26 +90,32 @@ $(function () {
          */
 
         describe('New Feed Selection', function () {
-            let initialFeeds, finalFeeds;
+            let finalFeeds;
             beforeEach(function (done) {
-                const initialFeeds = [];
+                /* const initialFeeds = [];
                 const t = document.querySelectorAll('.feed .entry')
                 //get text content of all initial feeds
                 for (i of t) {
                     initialFeeds.push(i.textContent);
-                }
+                } */
+                finalFeeds= [];
 
-                loadFeed(1, done);
+                loadFeed(1, function(){
+                    const t = document.querySelectorAll('.feed .entry')
+                    //get text content of all final feeds
+                    for (i of t) {
+                        finalFeeds.push(i.textContent);
+                    }
+                    done();});
 
             });
             it("contents change when a new feed is loaded by the loadFeed function", function (/* done */) {
-                const finalFeeds = [];
-                const t = document.querySelectorAll('.feed .entry')
+               /*  const t = document.querySelectorAll('.feed .entry')
                 //get text content of all initial feeds
                 for (i of t) {
                     finalFeeds.push(i.textContent);
                 }
-
+ */
                 expect(initialFeeds).not.toEqual(finalFeeds);
                 /* done(); */
             });
