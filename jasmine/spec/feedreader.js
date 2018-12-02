@@ -95,7 +95,7 @@ $(function () {
                 loadFeed(1, done);
 
             });
-            it("contents change when a new feed is loaded by the loadFeed function", function (done) {
+            it("contents change when a new feed is loaded by the loadFeed function", function (/* done */) {
                 const finalFeeds = [];
                 const t = document.querySelectorAll('.feed .entry')
                 //get text content of all initial feeds
@@ -104,7 +104,7 @@ $(function () {
                 }
 
                 expect(initialFeeds).not.toEqual(finalFeeds);
-                done();
+                /* done(); */
             });
             /* test that ensures when a new feed is loaded
              * by the loadFeed function that the content actually changes.
