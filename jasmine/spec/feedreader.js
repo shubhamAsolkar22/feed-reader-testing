@@ -66,22 +66,16 @@ $(function () {
 
 
     describe('Intitial Entries', function () {
-        let initialFeeds;
+        /* let initialFeeds; */
         beforeEach(function (done) {
-            loadFeed(0, function(){
-                initialFeeds = [];
-                const t = document.querySelectorAll('.feed .entry')
-                //get text content of all initial feeds
-                for (i of t) {
-                    initialFeeds.push(i.textContent);
-                }
-                done();});
+            loadFeed(0, function () {
+                done();
+            });
         });
 
-        it('should load atleast one .entry element within .feed container when loadFeed is called', function (/* done */) {
+        it('should load atleast one .entry element within .feed container when loadFeed is called', function () {
             const feedContainer = document.querySelector(".feed");
             expect(feedContainer.querySelector('.entry')).not.toBe(null);
-            /* done(); */
         });
 
         /* test that ensures when the loadFeed
@@ -89,41 +83,46 @@ $(function () {
          * a single .entry element within the .feed container.
          */
 
-        describe('New Feed Selection', function () {
-            let finalFeeds;
-            beforeEach(function (done) {
-                /* const initialFeeds = [];
+
+    });
+
+
+    describe('New Feed Selection', function () {
+        let finalFeeds = [], initialFeeds = [];
+        beforeEach(function (done) {
+            /* const initialFeeds = [];
+            const t = document.querySelectorAll('.feed .entry')
+            //get text content of all initial feeds
+            for (i of t) {
+                initialFeeds.push(i.textContent);
+            } */
+            loadFeed(0, function () {
                 const t = document.querySelectorAll('.feed .entry')
-                //get text content of all initial feeds
+                //get text content of all final feeds
                 for (i of t) {
                     initialFeeds.push(i.textContent);
-                } */
-                finalFeeds= [];
+                }
 
-                loadFeed(1, function(){
+                loadFeed(1, function () {
                     const t = document.querySelectorAll('.feed .entry')
                     //get text content of all final feeds
                     for (i of t) {
                         finalFeeds.push(i.textContent);
                     }
-                    done();});
+                    done();
+                });
+                done();
+            });
 
-            });
-            it("contents change when a new feed is loaded by the loadFeed function", function (/* done */) {
-               /*  const t = document.querySelectorAll('.feed .entry')
-                //get text content of all initial feeds
-                for (i of t) {
-                    finalFeeds.push(i.textContent);
-                }
- */
-                expect(initialFeeds).not.toEqual(finalFeeds);
-                /* done(); */
-            });
-            /* test that ensures when a new feed is loaded
-             * by the loadFeed function that the content actually changes.
-             */
         });
+        it("contents change when a new feed is loaded by the loadFeed function", function () {
 
+            expect(initialFeeds).not.toEqual(finalFeeds);
+
+        });
+        /* test that ensures when a new feed is loaded
+         * by the loadFeed function that the content actually changes.
+         */
     });
 
 
